@@ -1,0 +1,269 @@
+%\documentclass[12pt]{ctexbook}
+\documentclass[12pt]{ctexart}
+
+% 页面布局和间距设置
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{microtype}
+
+% 字体设置
+\usepackage{fontspec}
+\usepackage{xeCJK}
+
+% 标题格式设置
+\usepackage{titlesec}
+
+% 图形处理
+\usepackage{graphicx}
+\usepackage{adjustbox}
+
+% 双向文本支持
+\usepackage{bidi}
+
+% 添加以下两行命令
+\XeTeXlinebreaklocale "my"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\XeTeXgenerateactualtext=1
+
+% 设置页面尺寸和页边距
+\geometry{
+	b5paper,
+	left=18.8mm,
+	right=18.8mm,
+	top=26.7mm,
+	bottom=26.7mm
+}
+
+% 设置行间距为黄金比例
+\linespread{1.618}
+
+%\setlength{\parskip}{0.5\baselineskip}
+
+\raggedbottom
+
+% 设置标题字体大小和字体，根据黄金比例递减
+\titleformat{\part}
+{\centering\fontsize{24pt}{24pt}\selectfont\sffamily}
+{\thesection}{1em}{}
+
+\titleformat{\chapter}
+{\centering\fontsize{21pt}{21pt}\selectfont\sffamily}
+{\thesubsection}{1em}{}
+
+\titleformat{\section}
+{\centering\fontsize{18pt}{18pt}\selectfont\sffamily}
+{\thesubsubsection}{1em}{}
+
+\titleformat{\subsection}
+{\centering\fontsize{16pt}{16pt}\selectfont\sffamily}
+{\theparagraph}{1em}{}
+
+\titleformat{\subsubsection}
+{\fontsize{14pt}{14pt}\selectfont\sffamily}
+{\thesubparagraph}{1em}{}
+
+\titlespacing*{\part}{0pt}{2em}{1em}
+\titlespacing*{\chapter}{0pt}{1.5em}{0.75em}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+\titlespacing*{\subsubsection}{0pt}{0.8em}{0.4em}
+
+% 设置标题级别编号
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% 字体设置
+\setCJKmainfont[Path=./, BoldFont=HarmonyOSSansSC-Bold.ttf]{HarmonyOSSansSC-Regular.ttf}
+
+\newCJKfontfamily\ssbfont[Path=./]{simsun-extb.ttf}
+\newcommand{\ssb}[1]{{\ssbfont #1}}
+
+\newCJKfontfamily\ssgfont[Path=./]{simsun-extg.ttf}
+\newcommand{\ssg}[1]{{\ssgfont #1}}
+
+% 设置无衬线字体，并添加粗体选项
+\setCJKsansfont[Path=./, BoldFont=HarmonyOSSansSC-Bold.ttf]{HarmonyOSSansSC-Regular.ttf}
+
+\newCJKfontfamily\lsfont[Path=./]{MiSans-L3.otf}
+\newcommand{\ls}[1]{{\lsfont #1}}
+
+% 香港繁宋（繁体中文）
+\newCJKfontfamily\cantonfont[Path=./]{MSungHKLight.ttf}
+\newcommand{\hk}[1]{{\cantonfont #1}}
+
+% 台湾繁宋（繁体中文）
+\newCJKfontfamily\twafont[Path=./]{TW-Sung.ttf}
+\newcommand{\tw}[1]{{\twafont #1}}
+
+\newCJKfontfamily\twbfont[Path=./]{TW-Sung-Ext-B.ttf}
+\newcommand{\twb}[1]{{\twbfont #1}}
+
+\newCJKfontfamily\twpfont[Path=./]{TW-Sung-Plus.ttf}
+\newcommand{\twp}[1]{{\twpfont #1}}
+
+% 楷体
+\newCJKfontfamily\ktfont[Path=./]{FZKaiT-SC.ttf}
+\newcommand{\kt}[1]{{\ktfont #1}}
+
+% 设置英文字体
+\setmainfont[Scale=1.12]{BundesSans-Web-regular.otf}
+
+\setsansfont[Path=./]{Neue-Helvetica-World.otf}
+
+% 希腊文 [泽夫文体]
+\newfontfamily\grcfont[
+Script=Greek,
+Path=./,
+%BoldFont=,ZephText-Bold.ttf,
+%ItalicFont=ZephText-Italic.ttf,
+Scale=1.08
+]{Inter-Regular.otf}
+\newcommand{\grc}[1]{{\grcfont #1}}
+
+% 希伯来文
+\newfontfamily\hbfont[
+Script=Hebrew,
+Path=./,
+Scale=1.2
+]{NotoSansHebrew-Regular.ttf}
+\newcommand{\hb}[1]{{\hbfont\beginR#1\endR}}
+
+\newfontfamily\hbsfont[Script=Hebrew, Path=./]{Rubik-Regular.ttf}
+\newcommand{\hbs}[1]{{\hbsfont #1}}
+
+\newfontfamily\hbrfont[Script=Hebrew, Path=./]{Taamey_D.ttf}
+\newcommand{\hbr}[1]{\begin{RTL}\hbrfont #1\end{RTL}}
+
+% 天城文 [梵华体] https://github.com/Sandhi-IITBombay/Shobhika
+\newfontfamily\devfont[Script=Devanagari, Path=./]{NotoSansDevanagari-Regular.ttf}
+\newcommand{\dev}[1]{{\devfont #1}}
+
+% 阿拉伯文（从右到左）[埃米里/鲁比克]
+\newfontfamily\ararfont[Script=Arabic, Path=./]{Amiri-Regular.ttf}
+\newcommand{\arartext}[1]{\begin{RTL}\ararfont #1\end{RTL}}
+
+\newfontfamily\arafont[Script=Arabic, Path=./, Scale=1]{NotoKufiArabic-Regular.otf}
+\newcommand{\ara}[1]{{\arafont\beginR#1\endR}}
+
+\newfontfamily\arasfont[Script=Arabic, Path=./]{Rubik-Regular.ttf}
+\newcommand{\aras}[1]{{\arasfont #1}}
+
+% 藏文 [巴别石藏文体]
+\newfontfamily\tibetanfont[Script=Tibetan, Path=./, Scale=1.1]{BabelStoneTibetan.ttf}
+\newcommand{\tib}[1]{{\tibetanfont #1}}
+
+% seguihis
+\newfontfamily\sghfont[Path=./]{seguihis.ttf}
+\newcommand{\sgh}[1]{{\sghfont #1}}
+
+% 韩文 [KoPub 世界 基础体]
+\newCJKfontfamily\krfont[
+Script=Hangul,
+Path=./,
+%BoldFont=KoPubWorldBatangProMedium.otf,
+Scale=1.02
+]{PretendardGOV-Medium.otf}
+\newcommand{\kr}[1]{{\krfont #1}}
+
+\newCJKfontfamily\krsfont[Path=./]{SpoqaHanSansNeo-Regular.otf}
+\newcommand{\krs}[1]{{\krsfont #1}}
+
+% 西里尔文（俄文）[公共衬线体]
+\newfontfamily\rusfont[
+Script=Cyrillic, 
+Path=./,
+BoldFont=PTSansProBold.ttf,
+ItalicFont=PTSansProItalic.ttf,
+BoldItalicFont=PTSansProBoldItalic.ttf,
+Scale=1.08
+]{PTSansProRegular.ttf}
+\newcommand{\rus}[1]{{\rusfont #1}}
+
+% 缅文
+\newfontfamily\myanmarfont[Script=Myanmar, Path=./]{NotoSansMyanmar-Regular.otf}
+\newcommand{\my}[1]{{\myanmarfont #1}}
+
+% 泰文 [公文体]
+\newfontfamily\thaifont[
+Path=./,
+Script=Thai, 
+BoldFont=NotoSansThaiLooped-Bold.ttf,
+Scale=1.1
+]{NotoSansThaiLooped-Regular.ttf}
+\newcommand{\thai}[1]{{\thaifont #1}}
+
+% 日文 [游明朝/柊野角黑]
+\newCJKfontfamily\jpfont[Path=./, Scale=0.99]{HiraginoKakuGothicInterfaceW4.otf}
+\newcommand{\jp}[1]{{\jpfont #1}}
+
+\newCJKfontfamily\jpkanafont[Path=./, Scale=0.96]{NotoSerifHentaigana-Regular.otf}
+\newcommand{\jpkana}[1]{{\jpkanafont #1}}
+
+\newCJKfontfamily\jpsfont[Path=./]{HiraginoKakuGothicProNW3.otf}
+\newcommand{\jps}[1]{{\jpsfont #1}}
+
+% 越南文 [明朗体]
+\newfontfamily\vietfont[Path=./]{Merriweather-Regular.ttf}
+\newcommand{\ve}[1]{{\vietfont #1}}
+
+\newfontfamily\vietsfont[Path=./]{MerriweatherSans-Regular.ttf}
+\newcommand{\ves}[1]{{\vietsfont #1}}
+
+% 老挝文
+\newfontfamily\laofont[Script=Lao, Path=./, BoldFont=NotoSansLaoLooped-Bold.otf, Scale=1.12]{NotoSansLaoLooped-Regular.otf}
+\newcommand{\lao}[1]{{\laofont #1}}
+
+% 波斯文
+\newfontfamily\persianfont[Script=Arabic, Path=./]{Sahel.ttf}
+\newcommand{\perr}[1]{\begin{RTL}\persianfont #1\end{RTL}}
+
+\newfontfamily\persianrfont[Script=Arabic, Path=./, Scale=1.2]{Sahel.ttf}
+\newcommand{\per}[1]{{\persianrfont\beginR#1\endR}}
+
+% 乌尔都语
+\newfontfamily\urdurfont[Script=Arabic, Path=./]{hussaini-nastaleeq.ttf}
+\newcommand{\urdur}[1]{\begin{RTL}\urdurfont #1\end{RTL}}
+
+\newfontfamily\urdufont[Script=Arabic, Path=./]{hussaini-nastaleeq.ttf}
+\newcommand{\urdu}[1]{{\urdufont\beginR#1\endR}}
+
+% 圣书体
+\newfontfamily\ehfont[Path=./]{EgyptianText.ttf}
+\newcommand{\eh}[1]{{\ehfont #1}}
+
+% 西夏文
+\newfontfamily\tgfont[Path=./]{TangutYinchuan.ttf}
+\newcommand{\tg}[1]{{\tgfont #1}}
+
+% 孟加拉文
+\newfontfamily\bengalifont[Script=Bengali, Path=./, BoldFont=NotoSansBengali-Bold.otf]{NotoSansBengali-Regular.otf}
+\newcommand{\bgl}[1]{{\bengalifont #1}}
+
+% 国际音标 [雅丽]
+\newfontfamily\ipafont[Path=./]{CharisSIL-Regular.ttf}
+\newcommand{\ipa}[1]{{\ipafont #1}}
+
+% 蒙古文
+\newfontfamily\mongolianfont[Script=Mongolian, Path=./]{MQG8200.ttf}
+\newcommand{\mgl}[1]{\rotatebox[origin=c]{-90}{\mongolianfont #1}}
+
+% 越南喃字
+\newCJKfontfamily\nomfont[Path=./, Scale=1]{MiSans-L3.otf}
+\newcommand{\nom}[1]{{\nomfont #1}}
+
+% 高棉文
+\newfontfamily\khmerfont[Script=Khmer, Path=./, Scale=1.2]{NotoSansKhmer-Regular.ttf}
+\newcommand{\kh}[1]{{\khmerfont #1}}
+
+% 阿卡德文
+\newfontfamily\akdfont[Path=./]{NotoSansCuneiform-Regular.ttf}
+\newcommand{\akd}[1]{{\akdfont #1}}
+
+
+\begin{document}
+	
+	在这个语言的万花筒中,我们开启一段跨越 \hb{כׇּ֥ קׇ֣}时空的文字 \ara{بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ}盛宴。从东方智慧“子曰：‘学而时习之,不亦说乎？’” 到日本武士精神\jp{花は桜木人は武士},再到 \jpkana{𛅒𛅦𛀈𛀍𛄟𚿷𚿺}韩国的人生哲理\kr{세상에 공짜는 없다}。越南谚语Một cây làm chẳng nên non, ba cây chụm lại nên hòn núi cao与其古老的喃字\nom{𠊛}筆記相映成趣。老挝语\lao{ຄວາມຮູ້ຄື່ພະລັງ}和高棉文\kh{អក្ខរក្រមខេមរភាសា}诉说着知识的力量。在南亚,天城文\dev{देवनागरी}与孟加拉文\bgl{জ্ঞান হল শক্তি}异口同声地赞颂智慧。藏文\tib{ཤེས་བྱ་ནི་སྟོབས་ཤུགས་ཡིན།}在雪山之巅回响,而缅文\my{အသိပညာသည်အင်အားဖြစ်သည်}则在密林中低语。波斯文 \per{جمهوری اسلامی ایران}与乌尔都语 \urdu{اپ سے مل کر خوشی ہوی} 在中东地区交相辉映。蒙古文\mgl{ᠮᠡᠳᠡᠯᠭᠡ} \mgl{ᠪᠣᠯ} \mgl{ᠬᠦᠴᠦᠨ} \mgl{ᠴᠢᠳᠠᠯ} \mgl{ᠮᠥᠨ}在广袤的草原上传颂。最后,让我们以一句神秘的阿卡德楔形文字\akd{𒅆𒀀𒋫𒈨𒂊𒈠}结束这段语言的探索之旅。在这个\rus{глобальный}的时代,让我们Carpe diem,同时铭记 Think globally, act locally,共同创造一个\grc{εἰρήνη} 的世界。
+	
+	
+\end{document}
